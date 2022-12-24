@@ -163,7 +163,7 @@ async def check_mymails(ctx: commands.context):
         randomkeys = data['aMail']['RandomKeys']
 
         for i in randomkeys:  # 나에게 전송된 메일의 RandomKey들을 리스트에 저장하는 과정
-            if data['aMail']['Mails'][i]['To'] == str(ctx.author.id):
+            if data['aMail']['Mails'][i]['To'].split("/")[0] == str(ctx.author.id):
                 mails_list.append(i)
             else:
                 pass
@@ -182,6 +182,11 @@ async def check_mymails(ctx: commands.context):
             embed.add_field(
                 name='내용',
                 value=f'{the_mail["Content"]}',
+                inline=False
+            )
+            embed.add_field(
+                name='메일 고유 키',
+                value=f'{i} / 고유 키는 메일을 삭제 할 때 이용됩니다.',
                 inline=False
             )
             embed.set_footer(text=f'작성 날짜 : {the_mail["WroteAt"]}')
@@ -231,4 +236,4 @@ async def find_password(ctx: commands.context):
         await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
-bot.run("MTA1NjA2OTEwMDY3OTQ4MzUxMw.GS_f-v.QlAepoEuMK_3hUIvqvOEVwlNweFXKTfZUOiPsQ")
+bot.run("MTA1NjA2OTEwMDY3OTQ4MzUxMw.G4RW00.Gie7dibyBWSaZrj5k2KqQlNxNf-bwvleuFoslU")
