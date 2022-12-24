@@ -17,6 +17,11 @@ firebase_admin.initialize_app(cred, {
 data = db.reference()
 
 
+def error_embed(des:str):
+    embed = discord.Embed(title='오류', description=des, colour=discord.Colour.red())
+    return embed
+
+
 def db_check(user_id: int):
     dir = db.reference().get()
     if dir['aMail']['People'].get(str(user_id)) is None:
@@ -43,6 +48,8 @@ class GetPassword(discord.ui.Modal):
 
     async def callback(self, interaction: discord.Interaction):
         # self.children[0].value 이 입력한 값
+        if str(self.children[0].value).isdigit():
+            return await interaction.response.send_message(embed=error_embed('아이디는 숫자로 설정할 수 없습니다.'))
         today = date.today()
         today = today.strftime('%Y.%m.%d')
         complete = discord.Embed(title='메일 등록 완료', description='', colour=discord.Colour.blurple())
@@ -82,8 +89,7 @@ class WriteMail(discord.ui.Modal):
     async def callback(self, interaction: discord.Interaction):
         dir = db.reference().get()
         if dir['aMail']['ID'].get(str(self.children[0].value)) is None:
-            error = discord.Embed(title='오류', description='메일 수신자가 aMail 아이디를 생성하지 않았습니다.', colour=discord.Colour.red())
-            return await interaction.channel.send(embed=error)
+            return await interaction.channel.send(embed=error_embed('메일 수신자가 aMail 아이디를 생성하지 않았습니다.'))
         today = date.today()
         today = today.strftime('%Y.%m.%d')
         randomkey = create(10)
@@ -137,7 +143,7 @@ async def signup(ctx: commands.context):
         modal = GetPassword(title="메일 생성하기")
         await ctx.send_modal(modal)
     else:
-        return await ctx.respond('이미 메일이 있습니다.')
+        return await ctx.respond(embed=error_embed('이미 메일이 존재합니다.'))
 
 
 @bot.slash_command(name='메일작성')
@@ -146,7 +152,7 @@ async def write_mail(ctx: commands.context):
         modal = WriteMail(title='메일 작성하기')
         await ctx.send_modal(modal)
     else:
-        await ctx.respond('등록된 메일이 없습니다. `/메일생성` 커맨드로 메일을 생성하여주세요.')
+        await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
 @bot.slash_command(name='메일보기')
@@ -185,7 +191,7 @@ async def check_mymails(ctx: commands.context):
         await paginator.respond(ctx.interaction, ephemeral=False)
 
     else:
-        await ctx.respond('등록된 메일이 없습니다. `/메일생성` 커맨드로 메일을 생성하여주세요.')
+        await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
 @bot.slash_command(name='아이디찾기')
@@ -199,7 +205,7 @@ async def find_my_id(ctx: commands.context):
         )
         await ctx.respond(embed=embed)
     else:
-        await ctx.respond('등록된 메일이 없습니다. `/메일생성` 커맨드로 메일을 생성하여주세요.')
+        await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
 @bot.slash_command(name='비밀번호찾기')
@@ -222,7 +228,7 @@ async def find_password(ctx: commands.context):
         )
         await ctx.respond(embed=embed)
     else:
-        await ctx.respond('등록된 메일이 없습니다. `/메일생성` 커맨드로 메일을 생성하여주세요.')
+        await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
-bot.run("token")
+bot.run("MTA1NjA2OTEwMDY3OTQ4MzUxMw.GS_f-v.QlAepoEuMK_3hUIvqvOEVwlNweFXKTfZUOiPsQ")
