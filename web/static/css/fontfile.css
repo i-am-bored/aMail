@@ -1,0 +1,10 @@
+
+@font-face {
+    font-family: 'Puradak Gentle Gothic'; /*font 이름*/ 
+    /* 브라우저&디바이스 환경에 따른 font 파일 위치 정의 */
+   src: url('./Puradak\ Gentle\ Gothic.ttf'); /* IE9 Compat Modes */
+}
+
+p {
+    font-family: 'Puradak Gentle Gothic';
+}

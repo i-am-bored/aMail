@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=NanumGothic&display=swap" rel="stylesheet" />
+        <link href="../static/css/main2.css" rel="stylesheet" />
+        <title>aMail</title>
+        <style>
+            input {
+                font-size: 15px;
+                border: 0;
+                border-radius: 15px;
+                outline: none;
+                padding-left: 10px;
+                background-color: rgb(233, 233, 233);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="v10_43"><div class="name"></div>
+        <span class="v10_45">aMail</span>
+        <form action="/send" method="POST">
+            <div class="v10_58"><input type="text" name='receiver' style="width:1565px;height:34.5px;"></div>
+            <br>
+            <div class="v10_80"><input type="text" name='poster' style="width:1565px;height:34.5px;"></div>
+            <div class="v10_64"><input type="text" name='title' style="width:1565px;height:34.5px;"></div>
+            <div class="v10_60"><input type="text" name='content' style="width:1565px;height:552px;"></div>
+
+            <div class="v10_65"><input type="submit" value="메일 보내기" style="width:173px;height:53px;background-color: skyblue;"></div>
+        </form>
+
+        <span class="v10_61">받는 사람<br>(메일아이디)</span>
+        <span class="v10_70">보내는 사람<br>(메일아이디)</span>
+        <span class="v10_62">제목</span>
+        <span class="v10_63">내용</span> <!--v10_65-->
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/fontfile.css" rel="stylesheet">
+    <title>aMail</title>
+    <style>
+        p {
+            font-size: 200%;
+        }
+        input {
+            font-size: 15px;
+            border: 0;
+            border-radius: 15px;
+            outline: none;
+            padding-left: 10px;
+            background-color: rgb(233, 233, 233);
+        }
+    </style>
+</head>
+<body>
+    <big><center><p>로그인</p></center></big>
+    <br><br><br><br><br><br><br><br><br><br>
+    <form action="/logincheck" method="POST">
+        <!--<center><textarea type="text" id='id' name='id'  style="width:700px;height:10px;"></textarea></center>
+        <br>
+        <center><textarea type="text" id='password' name="password"  style="width:700px;height:10px;"></textarea></center>
+        <br><br> -->
+        <center>
+            <input type="text" name="id" style="width:700px;height:35px;"><br><br><br>
+            <input type="text" name="password" style="width:700px;height:35px;">
+        </center>
+        <br><br><br>
+        <center><input type="submit" value="로그인" style="width:200px;height:30px"></center>
+    </form>
+
+</body>
+</html>

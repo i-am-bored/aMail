@@ -184,11 +184,6 @@ async def check_mymails(ctx: commands.context):
                 value=f'{the_mail["Content"]}',
                 inline=False
             )
-            embed.add_field(
-                name='메일 고유 키',
-                value=f'{i} / 고유 키는 메일을 삭제 할 때 이용됩니다.',
-                inline=False
-            )
             embed.set_footer(text=f'작성 날짜 : {the_mail["WroteAt"]}')
             page.append(embed)
 
@@ -236,4 +231,4 @@ async def find_password(ctx: commands.context):
         await ctx.respond(embed=error_embed('등록된 메일이 없습니다.\n`/메일생성` 커맨드로 메일을 생성하여주세요.'))
 
 
-bot.run("MTA1NjA2OTEwMDY3OTQ4MzUxMw.G3ozwz.1aZDbm-oKjsQ062joB2hxkCWmoFBZvg6VBqjt8")
+bot.run("")
